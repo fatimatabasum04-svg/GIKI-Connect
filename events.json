@@ -1,0 +1,68 @@
+{
+  "events": [
+    {
+      "id": "c0dd966f-7c7",
+      "title": "IPAF26",
+      "when_iso": "2026-05-04T12:12:00",
+      "place": "Audi",
+      "description": "",
+      "hobby_tags": [
+        "Music",
+        "Art",
+        "Photography"
+      ],
+      "clusters": [
+        0
+      ]
+    },
+    {
+      "id": "evt-seed-1",
+      "title": "Cross-faculty board-game & snacks night",
+      "when_iso": "2026-05-09T19:00",
+      "place": "Hostel common room — Block A",
+      "description": "GIKI Connect pilot: low-pressure mixer. Bring a friend from another faculty.",
+      "hobby_tags": [
+        "Gaming",
+        "Reading",
+        "Cooking"
+      ],
+      "clusters": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "evt-seed-2",
+      "title": "Outdoor hike + photography walk",
+      "when_iso": "2026-05-11T06:30",
+      "place": "Main gate pickup",
+      "description": "Weekend trail; phones/cameras welcome. Sign up via society desk.",
+      "hobby_tags": [
+        "Hiking",
+        "Photography",
+        "Travelling",
+        "Fitness"
+      ],
+      "clusters": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "evt-seed-3",
+      "title": "Coding clinic & peer help session",
+      "when_iso": "2026-05-14T17:00",
+      "place": "CS lab 2",
+      "description": "Bring a laptop; seniors float between tables. All faculties welcome.",
+      "hobby_tags": [
+        "Coding / Programming",
+        "Debating",
+        "Reading"
+      ],
+      "clusters": [
+        1,
+        2
+      ]
+    }
+  ]
+}

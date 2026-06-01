@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="GIKI-Connect: Theory of Data Science demo — interest tribes and campus event ideas for GIK Institute." />
+  <meta name="theme-color" content="#6e1a35" />
+  <title>GIKI-Connect · Interest tribes demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-masthead" role="banner">
+      <div class="site-masthead__brand">
+        <div class="site-logo">
+          <span class="site-logo__mark">GIKI</span>
+          <span class="site-logo__word">Connect</span>
+        </div>
+        <p class="site-masthead__tagline">Theory of Data Science · course project demo</p>
+      </div>
+      <p class="site-masthead__lede">Open <strong>How to use</strong> for a short walkthrough, then <strong>Student</strong> to try your match or <strong>GIKI admin</strong> to post a sample campus event.</p>
+      <nav class="tabs" role="tablist" aria-label="Main sections">
+        <button type="button" class="tab active" id="tab-btn-guide" data-tab="guide" role="tab" aria-selected="true" aria-controls="panel-guide">How to use</button>
+        <button type="button" class="tab" id="tab-btn-student" data-tab="student" role="tab" aria-selected="false" aria-controls="panel-student">Student</button>
+        <button type="button" class="tab" id="tab-btn-admin" data-tab="admin" role="tab" aria-selected="false" aria-controls="panel-admin">GIKI admin</button>
+      </nav>
+    </header>
+
+    <div id="panel-student" class="panel hidden" role="tabpanel" aria-labelledby="tab-btn-student">
+      <section class="card demo-hero card--intro" id="student-hero">
+        <div class="badge">Live Demo · Theory of Data Science · GIKI</div>
+        <h1 class="demo-title">Find Your Interest Tribe</h1>
+        <p class="demo-lead">Work through the steps in order, then press the button once. Your tribe and suggestions appear further down the page.</p>
+        <p class="demo-blurb"><strong>Honest scope:</strong> your <strong>hobbies, society hours, comfort meeting new people,</strong> and <strong>how concentrated your close friendships are</strong> decide which of <strong>eight interest tribes</strong> you match. Faculty, year, and society names are optional context for you—they do <em>not</em> change that tribe number in this demo.</p>
+        <div class="demo-stats" id="demo-stats" aria-live="polite">
+          <p class="hint">Loading stats…</p>
+        </div>
+      </section>
+
+      <nav class="student-jump-nav" aria-label="Jump to form steps or results">
+        <span class="student-jump-nav__label">On this page</span>
+        <div class="student-jump-nav__chips">
+          <a class="jump-chip" href="#student-hero">Intro</a>
+          <a class="jump-chip" href="#step-read">1 · Context</a>
+          <a class="jump-chip" href="#step-profile">2 · Profile</a>
+          <a class="jump-chip" href="#step-social">3 · Social</a>
+          <a class="jump-chip" href="#step-societies">4 · Societies</a>
+          <a class="jump-chip" href="#step-hobbies">5 · Hobbies</a>
+          <a class="jump-chip jump-chip--results is-disabled" href="#student-results" id="jump-to-results" aria-disabled="true" title="Available after you find your tribe">Results</a>
+          <a class="jump-chip" href="#tribe-atlas-public">Tribe map</a>
+        </div>
+      </nav>
+
+      <main class="student-flow" aria-label="Student demo form">
+      <section class="card form-step insight-card" id="step-read">
+        <p class="step-kicker"><span class="step-num">1</span> Read first</p>
+        <h2>Project context</h2>
+        <div id="student-insight-body" class="insight-body">
+          <p class="hint">Loading…</p>
+        </div>
+      </section>
+
+      <section class="card form-step" id="step-profile">
+        <p class="step-kicker"><span class="step-num">2</span> Profile</p>
+        <h2>Your academic profile</h2>
+        <p class="step-hint">Optional for your tribe match — useful if you are writing this up or want the form to feel realistic.</p>
+        <div class="field">
+          <label for="faculty">Faculty</label>
+          <select id="faculty" class="text-input">
+            <option value="">Select your faculty</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="year">Year of study</label>
+          <select id="year" class="text-input">
+            <option value="">Select year</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="card form-step" id="step-social">
+        <p class="step-kicker"><span class="step-num">3</span> Friendship pattern</p>
+        <h2>Social connectivity</h2>
+        <p class="step-hint">Sliders match the survey style (0–100% where shown). Together they set how concentrated your close friendships look across province and faculty — that feeds your tribe match.</p>
+        <div class="field">
+          <label for="same_prov_pct">% close friends from <em>same province</em> <strong id="same_prov_pct_v" aria-live="polite">50%</strong></label>
+          <input type="range" id="same_prov_pct" name="same_prov_pct" min="0" max="100" step="5" value="50" aria-valuetext="50 percent" />
+        </div>
+        <div class="field">
+          <label for="same_fac_pct">% close friends from <em>same faculty</em> <strong id="same_fac_pct_v" aria-live="polite">50%</strong></label>
+          <input type="range" id="same_fac_pct" name="same_fac_pct" min="0" max="100" step="5" value="50" aria-valuetext="50 percent" />
+        </div>
+        <div class="field">
+          <label for="friends">Approx. close friends at GIKI (count) <strong id="friends_v" aria-live="polite">4</strong></label>
+          <input type="range" id="friends" name="friends" min="1" max="20" step="0.5" value="4" aria-valuetext="4 friends" />
+        </div>
+        <div class="field">
+          <label for="comfort">Comfort talking to students from <em>other provinces</em> (1–5) <strong id="comfort_v" aria-live="polite">4</strong></label>
+          <input type="range" id="comfort" name="comfort" min="1" max="5" step="1" value="4" aria-valuetext="4 of 5" />
+        </div>
+      </section>
+
+      <section class="card form-step" id="step-societies">
+        <p class="step-kicker"><span class="step-num">4</span> Societies</p>
+        <h2>Society involvement</h2>
+        <p class="step-hint">Hours count toward your tribe match; society names are optional labels for your own story.</p>
+        <fieldset class="field soc-fieldset">
+          <legend>Society member?</legend>
+          <label class="inline"><input type="radio" name="soc_member" value="yes" checked /> Yes — I&apos;m a member</label>
+          <label class="inline"><input type="radio" name="soc_member" value="no" /> Not a member</label>
+        </fieldset>
+        <div class="field" id="soc-hours-wrap">
+          <label for="soc_hours">Society hours per week <strong id="soc_hours_v" aria-live="polite">0 h/wk</strong></label>
+          <input type="range" id="soc_hours" name="soc_hours" min="0" max="10" step="0.5" value="0" aria-valuetext="0 hours per week" />
+        </div>
+        <div class="field" id="soc-societies-wrap">
+          <label>Societies you belong to <span class="hint">(optional)</span></label>
+          <p class="hint" style="margin-top:0.25rem">Select any that apply — list follows <strong>GIK Institute</strong> campus-life societies (short labels for the form).</p>
+          <div class="hobby-grid society-grid" id="society-grid"></div>
+        </div>
+      </section>
+
+      <section class="card form-step card--action" id="step-hobbies">
+        <p class="step-kicker"><span class="step-num">5</span> Interests &amp; run</p>
+        <h2>Your hobbies &amp; interests</h2>
+        <p class="step-hint">Pick at least one hobby, then press the button.</p>
+        <div class="hobby-grid" id="hobby-grid" role="group" aria-label="Hobbies and interests — pick at least one"></div>
+        <div class="action-cta">
+          <button type="button" class="primary" id="submit">Find my interest tribe</button>
+          <p class="action-cta__note">Results open below: <strong>your tribe, matched events, and peers</strong> first; explanations and tips follow.</p>
+          <p class="error" id="error" role="alert"></p>
+        </div>
+      </section>
+      </main>
+
+      <section class="card result-shell hidden" id="result" aria-live="polite" aria-labelledby="tribe-id-pill tribe-title">
+        <div id="student-results" class="result-anchor" tabindex="-1"></div>
+        <header class="result-hero" id="result-overview">
+          <p class="result-kicker" id="result-kicker">Your interest tribe</p>
+          <div class="result-tribe-row">
+            <span class="tribe-id-pill" id="tribe-id-pill" title="Interest tribe number from the saved survey analysis">Tribe ID —</span>
+            <h2 class="result-tribe-title" id="tribe-title"></h2>
+          </div>
+          <p class="result-tagline" id="result-tagline"></p>
+          <ul class="result-stat-chips" id="result-stat-chips" aria-label="Snapshot for your run"></ul>
+          <nav class="result-quick-nav" aria-label="Explore your results">
+            <a class="quick-link" href="#result-hobbies">Hobbies</a>
+            <a class="quick-link" href="#result-events">Events</a>
+            <a class="quick-link" href="#result-peers">Peers</a>
+            <a class="quick-link" href="#result-silo">Friendship focus</a>
+            <a class="quick-link" href="#result-why">Why me?</a>
+            <a class="quick-link" href="#result-read">Read</a>
+            <a class="quick-link" href="#insight-sections">Insights</a>
+            <a class="quick-link" href="#result-more">Tips</a>
+            <a class="quick-link" href="#tribe-atlas-public">Map</a>
+          </nav>
+          <div class="result-hero-actions">
+            <button type="button" class="btn-text" id="scroll-to-atlas">Jump to tribe map</button>
+            <button type="button" class="btn-text btn-text--secondary" id="try-another-mix">Change hobbies &amp; run again</button>
+          </div>
+        </header>
+
+        <div class="result-tops result-tops--lead" id="result-hobbies">
+          <h3 class="result-section-label">Top hobbies in this tribe <span class="result-section-hint">(survey sample)</span></h3>
+          <div class="pill-list pill-list--emph" id="tribe-hobbies" aria-label="Most common hobbies in your assigned tribe"></div>
+        </div>
+
+        <section class="result-sub result-sub--match" id="result-events">
+          <h3 class="result-section-label">Matched events for you</h3>
+          <p class="hint tight">Ranked from posted campus events using your hobbies and tribe.</p>
+          <div id="event-list" class="event-list"></div>
+        </section>
+
+        <section class="result-sub result-sub--match" id="result-peers">
+          <h3 class="result-section-label">People to look for <span class="result-section-hint">(by shared interest)</span></h3>
+          <p class="hint tight">Illustrative people from the same tribe in the survey pool—conversation hooks, not real names.</p>
+          <div id="peer-list" class="peer-grid"></div>
+        </section>
+
+        <div class="result-silo-block" id="result-silo">
+          <div class="silo-row">
+            <span>Friendship concentration</span>
+            <span id="silo-label"></span>
+          </div>
+          <div class="silo-bar" aria-hidden="true"><i id="silo-fill" style="width:0%"></i></div>
+        </div>
+
+        <details class="assignment-details" id="result-why">
+          <summary class="assignment-summary">How was my tribe chosen?</summary>
+          <div id="assignment-explain-body" class="assignment-explain-body"></div>
+        </details>
+
+        <aside class="rec-callout" id="result-read">
+          <h3 class="result-section-label">Suggestions — try this</h3>
+          <p class="rec-text" id="rec"></p>
+        </aside>
+
+        <div id="insight-sections" class="insight-stack" aria-label="Deeper ideas and next steps"></div>
+
+        <section class="result-sub result-next" id="result-more">
+          <h3 class="result-section-label">Same tribe, different faces</h3>
+          <p class="hint tight">Same tribe as you in the survey list—broad vibe match. Use the hobby matches above for specific icebreakers.</p>
+          <p class="hint tight">Scroll down to the map: <strong>your tribe card stays outlined in rose</strong> after each run so you can compare all tribes at a glance.</p>
+        </section>
+
+        <p class="result-provenance" id="result-provenance"></p>
+        <p class="result-model-foot" id="result-model-foot"></p>
+      </section>
+
+      <section class="card tribe-showcase-card" id="tribe-atlas-public">
+        <h2>The 8 interest tribes at GIKI</h2>
+        <p class="hint tribe-atlas-intro" id="tribe-atlas-intro">
+          Each card is one <strong>interest tribe</strong> (numbered <strong>0–7</strong>). After you run the form, <strong>your tribe card is outlined in rose</strong> so you always know which one is yours.
+        </p>
+        <div id="public-tribe-cards" class="tribe-atlas-grid"></div>
+      </section>
+    </div>
+
+    <div id="panel-guide" class="panel" role="tabpanel" aria-labelledby="tab-btn-guide">
+      <section class="card guide-hero">
+        <h1 class="guide-title">How to use GIKI-Connect</h1>
+        <p class="guide-lead">GIKI-Connect is a <strong>course demo</strong> about life on a residential campus: small circles by batch or background, and how <strong>shared interests and societies</strong> can widen your week.</p>
+        <p class="guide-lead">You fill a short form; the site suggests an <strong>interest tribe</strong> (one of eight groups learned from the class survey), then shows <strong>event ideas and gentle next steps</strong>. Treat it like a conversation starter or bulletin board—not a label on your personality and not an official GIK system.</p>
+        <p class="guide-lead">Use the three tabs like chapters: read here first, try <strong>Student</strong> second, and open <strong>GIKI admin</strong> only if you want to practice posting an event for others to see.</p>
+      </section>
+
+      <p class="guide-interactive-hint hint">Tap a heading below to expand or collapse that section.</p>
+
+      <section class="card">
+        <details class="guide-details">
+          <summary class="guide-summary">How to move around the site</summary>
+          <div class="guide-details-inner">
+            <p><strong>How to use</strong> (this tab) — read at your own pace; you can leave and come back.</p>
+            <p><strong>Student</strong> — scroll from the top through the numbered steps. Move the sliders and tick hobbies so they feel true for you right now, then press <strong>Find my interest tribe</strong> once. Your result appears further down the same page: which tribe you sit closest to, a map of all tribes (yours is outlined), sample events that fit your interests, and simple ideas for what to try next. The “On this page” row is a shortcut if you want to jump to a section.</p>
+            <p><strong>GIKI admin</strong> — use this only to play “staff for a minute.” The demo password is already filled in. Write a pretend event (what, when, where), pick hobbies it suits, and optionally pick which tribes should see it near the top of their list. After you publish, go back to <strong>Student</strong>, run the form again, and check whether your event appears in the suggestions.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="card guide-honest">
+        <details class="guide-details" open>
+          <summary class="guide-summary">What your tribe result depends on</summary>
+          <div class="guide-details-inner">
+            <p>When you press <strong>Find my interest tribe</strong>, the demo compares your answers to <strong>eight interest tribes</strong> that were worked out once from the course survey. Think of it as “which crowd’s habits are closest to yours this week,” not a grade on your character. These parts of the form matter for that match:</p>
+            <ul class="guide-list">
+              <li>The <strong>hobbies</strong> you tick.</li>
+              <li><strong>How many society hours</strong> you say you put in each week (counted as zero if you say you are not in a society).</li>
+              <li>How <strong>comfortable</strong> you feel meeting students from other provinces.</li>
+              <li>The <strong>friendship sliders</strong> — together they describe whether your close friends are mostly from the same province or faculty, alongside how many close friends you say you have.</li>
+            </ul>
+            <p><strong>What does not change the tribe in this demo:</strong> faculty, year of study, and the named societies you tick. Those fields are there so your story feels complete on the page and in a report; they are not used to move you into a different tribe unless the project is rebuilt with new rules.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details class="guide-details">
+          <summary class="guide-summary">How this helps you (and what to remember)</summary>
+          <div class="guide-details-inner">
+            <p><strong>Why it exists.</strong> Many students feel their week shrink to the same faces. This demo names that pattern in a friendly way and nudges you toward <strong>hobbies, societies, and small plans</strong> that are easier to try than a vague “be more social.”</p>
+            <p><strong>What you learn from the numbers on Student.</strong> The counts at the top remind you that the tribes come from a <strong>real class survey</strong> (names removed)—so the match is grounded in data, not a random game.</p>
+            <p><strong>What you get after you press the button.</strong> A tribe label you can compare to the map, a short read on how tight or open your answers look, events that line up with your ticks, and anonymised “people like this cluster” prompts you can treat as icebreakers—not real identities.</p>
+            <p><strong>Keep perspective.</strong> One run does not define you. Faculty, year, and society names on the form are for your story and the write-up; they do not change the tribe number in this demo. The suggestions are <strong>hints</strong>; use judgment and follow real campus notices for anything official.</p>
+          </div>
+        </details>
+      </section>
+    </div>
+
+    <div id="panel-admin" class="panel hidden" role="tabpanel" aria-labelledby="tab-btn-admin">
+      <section class="card tribe-atlas">
+        <h2>Interest tribes (for event targeting)</h2>
+        <p class="hint">
+          There are <strong>eight</strong> tribes, numbered <strong>0 through 7</strong> — same names and headcounts as on the Student tab. <strong>Scroll</strong> the row of cards to see every tribe before you tick targets below.
+        </p>
+        <p class="hint">
+          When you publish an event, optional <em>target tribes</em> move it higher on matching students&apos; lists; <strong>hobby tags</strong> still do the main matching. Cards show a one-line idea for the kind of mixer that fits that tribe.
+        </p>
+        <div id="admin-tribe-cards" class="tribe-atlas-grid"></div>
+      </section>
+
+      <section class="card">
+        <h2>Post a campus event</h2>
+        <p class="hint">Demo admin passphrase is already filled in below; keep it unless you configured a different token for your machine (see README).</p>
+        <div class="field">
+          <label for="admin-token">Admin token</label>
+          <input type="password" id="admin-token" class="text-input" value="giki-admin-demo" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="ev-title">Event title</label>
+          <input type="text" id="ev-title" class="text-input" placeholder="e.g. Open mic night" />
+        </div>
+        <div class="field">
+          <label for="ev-when">Date &amp; time</label>
+          <input type="datetime-local" id="ev-when" class="text-input" />
+        </div>
+        <div class="field">
+          <label for="ev-place">Place</label>
+          <input type="text" id="ev-place" class="text-input" placeholder="Venue" />
+        </div>
+        <div class="field">
+          <label for="ev-desc">Description</label>
+          <textarea id="ev-desc" class="text-input tall" rows="3" placeholder="What to expect…"></textarea>
+        </div>
+        <p class="hint">Hobbies this event fits (student matching):</p>
+        <div class="hobby-grid" id="admin-hobby-grid"></div>
+        <p class="hint" style="margin-top:1rem"><strong>Target tribes</strong> (optional — tick any of IDs <strong>0–7</strong> to match the cards above):</p>
+        <div class="cluster-picks" id="cluster-picks"></div>
+        <button type="button" class="primary" id="admin-submit">Publish event</button>
+        <p class="error" id="admin-error" role="alert"></p>
+        <p class="ok" id="admin-ok" role="status"></p>
+      </section>
+      <section class="card">
+        <h2>Upcoming events (saved)</h2>
+        <div id="admin-event-list" class="event-list"></div>
+      </section>
+    </div>
+
+    <footer class="site-footer">
+      <p class="site-footer__authors">
+        Fatima Tabasum (2024178) · Saadia Asghar (2024550) · BSc Data Science · Theory of Data Science · Instructor: Sir Shahab Ansari
+      </p>
+      <p class="site-footer__note">Independent course work · not an official GIK Institute system or endorsement.</p>
+    </footer>
+  </div>
+  <script src="assets/static_backend.js?v=2"></script>
+  <script src="assets/app.js?v=2"></script>
+</body>
+</html>
